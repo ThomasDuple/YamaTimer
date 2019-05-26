@@ -1,0 +1,86 @@
+body {
+    background-color: #111;
+}
+
+#actual {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 100px;
+    color: #fff;
+    font-family: Roboto;
+    transition: 0.4s font-size;
+}
+#actual.bigdisplay {
+    font-size: 200px;
+}
+
+#ancient {
+    color: #fff;
+    width: 200px;
+    border-collapse: collapse;
+}
+
+#ancient>tbody>tr>td, #ancient>tbody>tr>th {
+    border: 1px solid #fff;
+    font-size: 20px;
+    text-align: center;
+    font-family: Roboto Medium;
+}
+#ancient>tbody>tr>#title {
+    width: 200px;
+    text-align: center;
+    font-size: 25px;
+    font-family: Roboto Medium;
+    padding: 10px;
+}
+
+#num {
+    width: 60px;
+}
+#tps {
+    width: 140px;
+}
+
+#melange {
+    position: fixed;
+    color: #fff;
+    font-size: 30px;
+    top: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: Roboto Medium;
+}
+
+#cubedisplay {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+}
+
+.w, .o, .g, .r, .b, .y {
+    color: #000;
+    height: 25px;
+    width: 25px;
+    text-align: center;
+}
+
+.w {
+    background-color: #fff;
+}
+.o {
+    background-color: #f90;
+}
+.g {
+    background-color: #0f0;
+}
+.r {
+    background-color: #f00;
+}
+.b {
+    background-color: #46f;
+}
+.y {
+    background-color: #ff0;
+}
