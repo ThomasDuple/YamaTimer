@@ -1,5 +1,7 @@
 var ms = 0;
 var s = 0;
+var insp = false;
+var insptime = 1500;
 var all = [];
 var hold = false;
 var holdtime = 0;
@@ -31,6 +33,8 @@ function keyDownHandler(e) {
 
     if (e.key == " " && go) {
         go = false;
+        insptime = 1500;
+        insp = false;
         hold = false;
         holdtime = 0;
         holdgood = 0;
@@ -52,6 +56,7 @@ function keyDownHandler(e) {
         ms = 0;
         s = 0;
         go = false;
+        insptime = 1500;
         hold = false;
         holdtime = 0;
         holdgood = 0;
@@ -69,8 +74,10 @@ function keyDownHandler(e) {
 function keyUpHandler(e) {
     if (e.key == " ") {
         hold = false;
-        if (holdgood) {
+        if (holdgood && insp) {
             go = true;
+        } else if (holdgood) {
+            insp = true;
         } else {
             hold = 0;
             document.getElementById('actual').style.color = '#fff';
@@ -80,7 +87,22 @@ function keyUpHandler(e) {
 }
 
 function inspection() {
-    
+    if (insp && go) {
+        insptime = 1500;
+        insp = false;
+    } else if (insp) {
+        insptime--;
+        if (insptime < 0) {
+            insptime = 1500;
+            insp = false;
+        }
+        
+        document.getElementById("ancient").style.display = "none";
+        document.getElementById("melange").style.display = "none";
+        document.getElementById("cubedisplay").style.display = "none";
+
+        document.getElementById("actual").innerHTML = insptime;
+    }
 }
 
 function time() {
@@ -90,10 +112,6 @@ function time() {
             ms = 0;
             s++;
         }
-        
-        document.getElementById("ancient").style.display = "none";
-        document.getElementById("melange").style.display = "none";
-        document.getElementById("cubedisplay").style.display = "none";
 
         var timer = document.getElementById("actual");
         timer.classList.add("bigdisplay");
@@ -410,6 +428,7 @@ function cubeScramble(movement, direction) {
 
 function display() {
     time();
+    inspection();
     ancient();
 
     setScramble();
